@@ -1,8 +1,10 @@
 
 
-
+# Put the IP of your lancache server here
 $LANCACHE_IP = "192.168.1.141"
 
+# We pull the domains right from the repo, we assume you've cloned uklans/cache-domains
+# Check for updates to domain list
 pushd ".\cache-domains"
 git fetch
 git pull
@@ -37,5 +39,6 @@ foreach($domain in $List)
 
 trap
 {
+    # Catch "domain does not exist" errors
     Write-Host -ForegroundColor Red "ERROR $($_)"
 }
